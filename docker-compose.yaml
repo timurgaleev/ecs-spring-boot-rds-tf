@@ -1,0 +1,28 @@
+version: '3.3'
+services:
+    mysql-docker:
+        container_name: 
+         mysql
+        image: mysql/mysql-server:5.7
+        environment:
+         MYSQL_ROOT_PASSWORD: secret
+         MYSQL_DATABASE: provectus
+         MYSQL_USER: superuser
+         MYSQL_PASSWORD: secret
+         MYSQL_ROOT_HOST: '%'
+        ports:
+            - 3306
+        restart: always
+  
+    app:
+        container_name: 
+         demo-app
+        depends_on:
+         - mysql-docker
+        build: 
+         context: .
+        restart: always
+        links:
+         - mysql-docker
+        ports:
+         - 8080:8080
