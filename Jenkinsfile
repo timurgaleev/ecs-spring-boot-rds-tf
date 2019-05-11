@@ -1,6 +1,5 @@
 node {
   stage 'Checkout'
-  git 'ssh://github.com:timurgaleev/home_task.git'
  
   stage 'Docker build'
   docker.build('demo')
