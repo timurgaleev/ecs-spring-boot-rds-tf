@@ -1,5 +1,5 @@
-variable "access_key" {}
-variable "secret_key" {}
+# variable "access_key" {}
+# variable "secret_key" {}
 
 provider "aws" {
   access_key = "${var.access_key}"
