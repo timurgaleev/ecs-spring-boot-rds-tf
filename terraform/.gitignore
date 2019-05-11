@@ -1,0 +1,6 @@
+# Скомпилированные файлы 
+* .tfstate 
+* .tfstate.backup 
+.terraform.tfstate.lock.info
+# Каталог модулей 
+.terraform /
