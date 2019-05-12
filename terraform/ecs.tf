@@ -16,7 +16,7 @@ data "template_file" "provectus_app" {
 
 resource "aws_ecs_task_definition" "app" {
   family                   = "provectus-app-task"
-  execution_role_arn       = "${var.ecs_task_execution_role}"
+  execution_role_arn       = "${aws_iam_role.task_execution_role.arn}"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = "${var.fargate_cpu}"

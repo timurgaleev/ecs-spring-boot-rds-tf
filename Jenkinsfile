@@ -1,7 +1,7 @@
 node {
-  stage 'Checkout'
-  git 'ssh://git@github.com:timurgaleev/home_task.git'
-
+   stage('SCM checkout'){
+        checkout scm
+    }
   stage 'Docker build'
   docker.build('demo')
  
