@@ -1,11 +1,16 @@
 # CI/CD spring application linked MySQL through jenkins pipeline
 
-This pipeline creates an application for checking for an update and if an update happens, the application is packed in a docker container and sent to the server (in this example, the AWS server was used).
+TODO
 
 ## What you'll need
 - Docker CE
 - Jenkins
-- AWS
+- AWS ECS
+- AWS RDS
+- AWS VPC
+- AWS ERC
+- AWS LB
+- tf
 
 ## Stack
 - Docker
