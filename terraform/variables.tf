@@ -23,16 +23,6 @@ variable "app_count" {
   default     = 3
 }
 
-#variable "ecs_autoscale_role" {
-#  description = "Role arn for the ecsAutocaleRole"
-#  default     = "YOUR_ECS_AUTOSCALE_ROLE_ARN"
-#}
-
-#variable "ecs_task_execution_role" {
-#  description = "Role arn for the ecsTaskExecutionRole"
-#  default     = "YOUR_ECS_TASK_EXECUTION_ROLE_ARN"
-#}
-
 variable "health_check_path" {
   default = "/"
 }
