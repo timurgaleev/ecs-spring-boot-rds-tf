@@ -6,7 +6,7 @@ node {
   docker.build('demo')
  
   stage 'Docker push'
-  docker.withRegistry('https://35898547283.dkr.ecr.us-west-2.amazonaws.com', 'ecr:us-west-2:ecr-credentials') {
+  docker.withRegistry('https://035898547283.dkr.ecr.us-west-2.amazonaws.com', 'ecr:us-west-2:ecr-credentials') {
     docker.image('provectus_app').push('latest')
   }
 }
