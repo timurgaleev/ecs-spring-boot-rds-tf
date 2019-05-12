@@ -5,10 +5,10 @@ services:
          mysql
         image: mysql/mysql-server:5.7
         environment:
-         MYSQL_ROOT_PASSWORD: secret
+         MYSQL_ROOT_PASSWORD: secret123456789-
          MYSQL_DATABASE: provectus
          MYSQL_USER: superuser
-         MYSQL_PASSWORD: secret
+         MYSQL_PASSWORD: secret123456789-
          MYSQL_ROOT_HOST: '%'
         ports:
             - 3306

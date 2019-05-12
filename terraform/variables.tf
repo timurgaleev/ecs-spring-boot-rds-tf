@@ -10,7 +10,7 @@ variable "az_count" {
 
 variable "app_image" {
   description = "Docker image to run in the ECS cluster"
-  default     = "provectus_app:latest"
+  default     = "035898547283.dkr.ecr.us-west-2.amazonaws.com/provectus_app:latest"
 }
 
 variable "app_port" {
