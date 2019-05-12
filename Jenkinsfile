@@ -7,6 +7,6 @@ node {
  
   stage 'Docker push'
   docker.withRegistry('035898547283.dkr.ecr.us-west-2.amazonaws.com/provectus_app', 'ecr:us-west-2:ecr-credentials') {
-    docker.image('provectus-image-app').push('')
+    docker.image('provectus-app').push('latest')
   }
 }
