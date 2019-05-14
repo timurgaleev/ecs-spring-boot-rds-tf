@@ -3,7 +3,7 @@ resource "aws_ecs_cluster" "main" {
 }
 
 data "template_file" "provectus_app" {
-  template = "${file("templates/ecs/provectus_app.json.tpl")}"
+  template = "${file("templates/ecs/provectus_app.json")}"
 
   vars {
     app_image      = "${var.app_image}"
@@ -16,7 +16,7 @@ data "template_file" "provectus_app" {
 
 resource "aws_ecs_task_definition" "app" {
   family                   = "provectus-app-task"
-  execution_role_arn       = "${aws_iam_role.task_execution_role.arn}"
+  execution_role_arn       = "${var.ecs_task_execution_role}"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = "${var.fargate_cpu}"

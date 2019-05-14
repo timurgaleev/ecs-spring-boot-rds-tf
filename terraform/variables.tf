@@ -23,6 +23,16 @@ variable "app_count" {
   default     = 3
 }
 
+variable "ecs_autoscale_role" {
+  description = "Role arn for the ecsAutocaleRole"
+  default     = "arn:aws:iam::035898547283:role/ecsAutoscaleRole"
+}
+
+variable "ecs_task_execution_role" {
+  description = "Role arn for the ecsTaskExecutionRole"
+  default     = "arn:aws:iam::035898547283:role/ecsTaskExecutionRole"
+}
+
 variable "health_check_path" {
   default = "/"
 }
@@ -36,3 +46,14 @@ variable "fargate_memory" {
   description = "Fargate instance memory to provision (in MiB)"
   default     = "2048"
 }
+
+# A project name
+variable "project" {
+  default = "provectus-project"
+}
+
+# Environment name
+variable "environment" {
+  default = "production"
+}
+

@@ -18,6 +18,24 @@
         "containerPort": ${app_port},
         "hostPort": ${app_port}
       }
+    ],
+    "environment": [
+      {
+        "name": "SPRING_PROFILES_ACTIVE",
+        "value": "mysql"
+      },
+      {
+        "name": "SPRING_DATASOURCE_URL",
+        "value": my_sql_options["dns_name"]
+      },
+      {
+        "name": "SPRING_DATASOURCE_USERNAME",
+        "value": my_sql_options["superuser"]
+      },
+      {
+        "name": "SPRING_DATASOURCE_PASSWORD",
+        "value": my_sql_options["secret123456789-"]
+      }
     ]
   }
 ]

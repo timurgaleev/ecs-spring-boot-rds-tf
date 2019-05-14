@@ -1,0 +1,41 @@
+[
+  {
+    "name": "provectus-app",
+    "image": "${app_image}",
+    "cpu": ${fargate_cpu},
+    "memory": ${fargate_memory},
+    "networkMode": "awsvpc",
+    "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/provectus-app",
+          "awslogs-region": "${aws_region}",
+          "awslogs-stream-prefix": "ecs"
+        }
+    },
+    "portMappings": [
+      {
+        "containerPort": ${app_port},
+        "hostPort": ${app_port}
+      }
+    ],
+    "environment": [
+      {
+       "name": "SPRING_PROFILES_ACTIVE",
+       "value": "mysql"
+      },
+      {
+       "name": "SPRING_DATASOURCE_URL",
+       "value": "${aws_db_instance.mysql.address}"
+      },
+      {
+       "name": "SPRING_DATASOURCE_USERNAME",
+       "value": "superuser"
+      },
+      {
+       "name": "SPRING_DATASOURCE_PASSWORD",
+       "value": "secret123456789-"
+      }    
+    ]
+  }
+]
