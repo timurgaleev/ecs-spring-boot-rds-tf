@@ -14,13 +14,11 @@ From the home screen, hit the Credentials link in the left-side bar.
 6. In the Advanced button, specify an ID that will make sense to you (so you don’t have to remember a randomly generated UUID). 
 
 **Terraform**
-The first thing we’ll do is specify the provider. This can be done in different ways but here we’re telling Terraform our provider is AWS and that it can find our credentials in $HOME/.aws/credentials which is the default location for AWS credentials on Mac and Linux.
+The first thing we’ll do is specify the provider. This can be done in different ways but here we’re telling Terraform our provider is AWS and that it can find our credentials in `$HOME/.aws/credentials` which is the default location for AWS credentials on Mac and Linux.
 
 To get the minimal amount of high availability, we’ll deploy our ECS cluster to run on at least two Availability Zones (AZs). The load balancer also needs at least 2 public subnets in different AZs.
 
-For this tutorial we’re going to be listening for HTTP requests on port 80, however I think it goes without saying that if you’re using this in production - listen for HTTPS over port 443. You can use AWS certificate manager (ACM) to provision and manage certificates.
-
-Time to run
+Initial command
 `terraform init terraform/`
 This gets it all set up and ready to apply.
 
