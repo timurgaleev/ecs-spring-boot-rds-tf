@@ -26,15 +26,15 @@
       },
       {
        "name": "SPRING_DATASOURCE_URL",
-       "value": "${rds_addresses}"
+       "value": my_sql_options"dns_name"
       },
       {
        "name": "SPRING_DATASOURCE_USERNAME",
-       "value": "superuser"
+       "value": my_sql_options["superuser"]
       },
       {
        "name": "SPRING_DATASOURCE_PASSWORD",
-       "value": "secret123456789-"
+       "value": my_sql_options"secret123456789-"
       }    
     ]
   }
