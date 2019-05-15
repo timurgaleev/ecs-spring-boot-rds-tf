@@ -38,4 +38,4 @@ When it spits out your load balancer url, go ahead and visit it at port :8080 an
 
 You can check the log by
 ~~~
-Open `http://[your DNS name]:8080` in your browser.
+Open http://[your DNS name]:8080 in your browser.
