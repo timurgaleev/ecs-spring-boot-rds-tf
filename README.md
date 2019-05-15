@@ -18,11 +18,12 @@ When it spits out your load balancer url, go ahead and visit it at port :8080 an
 
 ## What you'll need
 - Docker 
-- Jenkins
-`Install required plugins (if not already installed)`
+- Jenkins (Install required plugins (if not already installed))
+```
 [Pipeline](https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Plugin)
 [Docker Pipeline Plugin](https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Pipeline+Plugin)
 [Amazon ECR Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Amazon+ECR)
+```
 - AWS ECS
 - AWS RDS
 - AWS VPC
