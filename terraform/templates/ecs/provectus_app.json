@@ -26,7 +26,7 @@
       },
       {
        "name": "SPRING_DATASOURCE_URL",
-       "value": "${aws_db_instance.mysql.address}"
+       "value": "${rds_addresses}"
       },
       {
        "name": "SPRING_DATASOURCE_USERNAME",
