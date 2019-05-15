@@ -1,9 +1,9 @@
-# CI/CD spring application linked MySQL(RDS) through jenkins pipeline to AWS cloud(ECS)
+# CI/CD spring application linked MySQL(RDS) via Jenkins pipeline to AWS cloud(ECS)
 
 In **Jenkins** (Install required plugins (if not already installed))
-[Pipeline](https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Plugin)
-[Docker Pipeline Plugin](https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Pipeline+Plugin)
-[Amazon ECR Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Amazon+ECR)
+- [Pipeline](https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Plugin)
+- [Docker Pipeline Plugin](https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Pipeline+Plugin)
+- [Amazon ECR Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Amazon+ECR)
 
 1. Add AWS Credentials to Jenkins
 From the home screen, hit the Credentials link in the left-side bar.
