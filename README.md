@@ -1,5 +1,19 @@
-# CI/CD spring application linked MySQL through jenkins pipeline to AWS cloud
+# CI/CD spring application linked MySQL(RDS) through jenkins pipeline to AWS cloud(ECS)
 
+In **Jenkins** (Install required plugins (if not already installed))
+[Pipeline](https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Plugin)
+[Docker Pipeline Plugin](https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Pipeline+Plugin)
+[Amazon ECR Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Amazon+ECR)
+
+1. Add AWS Credentials to Jenkins
+From the home screen, hit the Credentials link in the left-side bar.
+2. Determine where you want to put your credentials. If unsure, go into the Global credentials. You may want to do some reading on credential management for a production/widespread use.
+3. Click the Add Credentials link in the left-side navigation.
+4. For Kind, select AWS Credentials.
+5. Enter the Access ID and Secret Access Key for the AWS user that has access to the ECR repository.
+6. In the Advanced button, specify an ID that will make sense to you (so you don’t have to remember a randomly generated UUID). 
+
+**Terraform**
 The first thing we’ll do is specify the provider. This can be done in different ways but here we’re telling Terraform our provider is AWS and that it can find our credentials in $HOME/.aws/credentials which is the default location for AWS credentials on Mac and Linux.
 
 To get the minimal amount of high availability, we’ll deploy our ECS cluster to run on at least two Availability Zones (AZs). The load balancer also needs at least 2 public subnets in different AZs.
@@ -18,13 +32,7 @@ When it spits out your load balancer url, go ahead and visit it at port :8080 an
 
 ## What you'll need
 - Docker 
-- Jenkins (Install required plugins (if not already installed))
-
-[Pipeline](https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Plugin)
-
-[Docker Pipeline Plugin](https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Pipeline+Plugin)
-
-[Amazon ECR Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Amazon+ECR)
+- Jenkins 
 - AWS ECS
 - AWS RDS
 - AWS VPC
