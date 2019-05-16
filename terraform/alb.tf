@@ -1,11 +1,11 @@
 resource "aws_alb" "main" {
-  name            = "provectus-load-balancer"
+  name            = "sb-load-balancer"
   subnets         = ["${aws_subnet.public.*.id}"]
   security_groups = ["${aws_security_group.lb.id}"]
 }
 
 resource "aws_alb_target_group" "app" {
-  name        = "provectus-target-group"
+  name        = "sb-target-group"
   port        = 80
   protocol    = "HTTP"
   vpc_id      = "${aws_vpc.main.id}"

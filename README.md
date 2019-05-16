@@ -28,6 +28,8 @@ to get this bad boy deployed! It will refresh state for all your resources and s
 
 When it spits out your load balancer url, go ahead and visit it at port :8080 and you should see the JSON returned from the initial block in your deployed into ECR app.
 
+In this example, wherever it says `sb` is my application name.
+
 ## What you'll need
 - Docker 
 - Jenkins 

@@ -9,7 +9,7 @@ resource "aws_appautoscaling_target" "target" {
 
 # Automatically scale capacity up by one
 resource "aws_appautoscaling_policy" "up" {
-  name               = "provectus_scale_up"
+  name               = "sb_scale_up"
   service_namespace  = "ecs"
   resource_id        = "service/${aws_ecs_cluster.main.name}/${aws_ecs_service.main.name}"
   scalable_dimension = "ecs:service:DesiredCount"
@@ -30,7 +30,7 @@ resource "aws_appautoscaling_policy" "up" {
 
 # Automatically scale capacity down by one
 resource "aws_appautoscaling_policy" "down" {
-  name               = "provectus_scale_down"
+  name               = "sb_scale_down"
   service_namespace  = "ecs"
   resource_id        = "service/${aws_ecs_cluster.main.name}/${aws_ecs_service.main.name}"
   scalable_dimension = "ecs:service:DesiredCount"
@@ -51,7 +51,7 @@ resource "aws_appautoscaling_policy" "down" {
 
 # Cloudwatch alarm that triggers the autoscaling up policy
 resource "aws_cloudwatch_metric_alarm" "service_cpu_high" {
-  alarm_name          = "provectus_cpu_utilization_high"
+  alarm_name          = "sb_cpu_utilization_high"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = "2"
   metric_name         = "CPUUtilization"
@@ -70,7 +70,7 @@ resource "aws_cloudwatch_metric_alarm" "service_cpu_high" {
 
 # Cloudwatch alarm that triggers the autoscaling down policy
 resource "aws_cloudwatch_metric_alarm" "service_cpu_low" {
-  alarm_name          = "provectus_cpu_utilization_low"
+  alarm_name          = "sb_cpu_utilization_low"
   comparison_operator = "LessThanOrEqualToThreshold"
   evaluation_periods  = "2"
   metric_name         = "CPUUtilization"

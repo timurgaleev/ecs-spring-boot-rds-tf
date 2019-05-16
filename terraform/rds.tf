@@ -21,7 +21,7 @@ resource "aws_db_instance" "mysql" {
     backup_retention_period   = 0
     backup_window             = "05:20-05:50"
     maintenance_window        = "sun:04:00-sun:04:30"
-   #final_snapshot_identifier = "${var.project}-${var.environment}-final"
+   final_snapshot_identifier = "${var.project}-${var.environment}-final"
 
     tags = {
       Name = "${var.project}-${var.environment}"

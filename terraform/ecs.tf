@@ -1,9 +1,9 @@
 resource "aws_ecs_cluster" "main" {
-  name = "provectus-cluster"
+  name = "sb-cluster"
 }
 
-data "template_file" "provectus_app" {
-  template = "${file("templates/ecs/provectus_app.json")}"
+data "template_file" "sb_app" {
+  template = "${file("templates/ecs/production_app.json")}"
 
   vars {
     app_image      = "${var.app_image}"
@@ -15,17 +15,17 @@ data "template_file" "provectus_app" {
 }
 
 resource "aws_ecs_task_definition" "app" {
-  family                   = "provectus-app-task"
+  family                   = "sb-app-task"
   execution_role_arn       = "${var.ecs_task_execution_role}"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = "${var.fargate_cpu}"
   memory                   = "${var.fargate_memory}"
-  container_definitions    = "${data.template_file.provectus_app.rendered}"
+  container_definitions    = "${data.template_file.sb_app.rendered}"
 }
 
 resource "aws_ecs_service" "main" {
-  name            = "provectus-service"
+  name            = "sb-service"
   cluster         = "${aws_ecs_cluster.main.id}"
   task_definition = "${aws_ecs_task_definition.app.arn}"
   desired_count   = "${var.app_count}"
@@ -39,7 +39,7 @@ resource "aws_ecs_service" "main" {
 
   load_balancer {
     target_group_arn = "${aws_alb_target_group.app.id}"
-    container_name   = "provectus-app"
+    container_name   = "sb-app"
     container_port   = "${var.app_port}"
   }
 

@@ -49,7 +49,7 @@ variable "fargate_memory" {
 
 # A project name
 variable "project" {
-  default = "provectus-project"
+  default = "spring-boot-project"
 }
 
 # Environment name
