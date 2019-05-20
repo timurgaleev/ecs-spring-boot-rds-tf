@@ -30,6 +30,31 @@ When it spits out your load balancer url, go ahead and visit it at port :8080 an
 
 In this example, wherever it says `sb` is my application name.
 
+## To run locally
+**Note**: I was unable to run new versions of spring-cloud-aws locally. It seems it tries always to perform some autoconfiguration assuming it is deployed on AWS, and as long as it doesn't find a valid instance id, it raises an exception and stops. 
+
+Some configurations are required in your AWS account for this sample to work. Additionally, we need an IAM user with access key and programmatic access to AWS API so that we can access AWS resources from our development machine.
+
+## Create an IAM User
+- Enable programmatic access
+- Generate an access key for the user
+- Give the user the following permissions:  ** AmazonRDSFullAccess
+
+## To run on EC2
+**Create an IAM role**
+Create an IAM role with the following properties:
+
+- EC2 role (i.e., a role to be attached to EC2 instances)
+- Policies: ** AmazonRDSFullAccess
+## Create an EC2 instance - if you want to create instance in AWS
+It has been tested with an instance with the following properties:
+
+- AMI: Ubuntu 18.04
+- Type: t2.micro
+- Storage: 20Gb
+- Security group: choose or create one with ports 22 and 8080 opened
+- Attach the IAM role created previously
+
 ## What you'll need
 - Docker 
 - Jenkins 
