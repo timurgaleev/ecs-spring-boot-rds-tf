@@ -34,7 +34,7 @@ resource "aws_db_instance" "mysql" {
  */
 resource "aws_db_parameter_group" "mysql" {
   name = "${var.project}-${var.environment}-pg"
-  family = "mysql5.7"
+  family = "mysql5."
   description = "RDS parameter group for ${var.project}"
 
   parameter {
