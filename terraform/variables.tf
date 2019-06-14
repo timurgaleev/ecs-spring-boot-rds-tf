@@ -57,3 +57,18 @@ variable "environment" {
   default = "production"
 }
 
+# User name for RDS
+variable "rds_username" { 
+  default = "superuser"
+}
+
+# Password for RDS
+variable "rds_password" {
+  default = "secret123456789-"
+}
+
+# The DB name in the RDS instance. Note that this cannot contain -'s
+variable "rds_db_name" {
+  default = "provectus"
+}
+

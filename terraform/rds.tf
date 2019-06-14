@@ -8,9 +8,9 @@ resource "aws_db_instance" "mysql" {
   engine                    = "mysql"
   engine_version            = "5.7.22"
   instance_class            = "db.t2.micro"
-  name                      = "provectus"
-  username                  = "superuser"
-  password                  = "secret123456789-"
+  name                      = "${var.rds_db_name}"
+  username                  = "${var.rds_username}"
+  password                  = "${var.rds_password}"
   port                      = 3306
   publicly_accessible       = false
   security_group_names      = []
