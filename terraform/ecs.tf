@@ -11,6 +11,11 @@ data "template_file" "sb_app" {
     fargate_memory = "${var.fargate_memory}"
     aws_region     = "${var.aws_region}"
     app_port       = "${var.app_port}"
+    db_hostname    = "${aws_db_instance.mysql.endpoint}"
+    db_port        = "${var.db_port}"
+    db_name        = "${var.db_name}"
+    db_username    = "${var.db_username}"
+    db_password    = "${var.db_password}"
   }
 }
 

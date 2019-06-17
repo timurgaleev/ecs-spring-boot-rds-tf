@@ -8,10 +8,10 @@ resource "aws_db_instance" "mysql" {
   engine                    = "mysql"
   engine_version            = "5.7.22"
   instance_class            = "db.t2.micro"
-  name                      = "${var.rds_db_name}"
-  username                  = "${var.rds_username}"
-  password                  = "${var.rds_password}"
-  port                      = 3306
+  name                      = "${var.db_name}"
+  username                  = "${var.db_username}"
+  password                  = "${var.db_password}"
+  port                      = "${var.db_port}"
   publicly_accessible       = false
   security_group_names      = []
   vpc_security_group_ids    = ["${aws_security_group.mysql.id}"]
@@ -22,6 +22,7 @@ resource "aws_db_instance" "mysql" {
   backup_window             = "05:20-05:50"
   maintenance_window        = "sun:04:00-sun:04:30"
   final_snapshot_identifier = "${var.project}-${var.environment}-final"
+  skip_final_snapshot       = true
 
   tags = {
     Name  = "${var.project}-${var.environment}"

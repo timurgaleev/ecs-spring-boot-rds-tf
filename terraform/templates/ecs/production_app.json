@@ -18,6 +18,27 @@
         "containerPort": ${app_port},
         "hostPort": ${app_port}
       }
+    ],
+    "environment": [
+      {
+         "name": "rds.username",
+         "value": "${db_username}"
+      },
+      {
+         "name": "rds.hostname",
+         "value": "${db_hostname}"
+      },
+      {
+         "name": "rds.password",
+         "value": "${db_password}"
+      },
+      {  "name": "rds.port",
+	 "value": "${db_port}"
+      },
+      {
+	 "name": "rds.db.name",
+         "value": "${db_name}"
+      }	 
     ]
   }
 ]
