@@ -7,3 +7,5 @@
 
 # Sensitive Files
 /secrets.tf
+
+.swp
