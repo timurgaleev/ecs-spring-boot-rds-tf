@@ -69,7 +69,7 @@ variable "db_password" {
 
 # The DB name in the RDS instance. Note that this cannot contain -'s
 variable "db_name" {
-  default = "provectus"
+  default = "sb_db"
 }
 
 variable "db_port" {

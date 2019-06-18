@@ -6,7 +6,7 @@ services:
         image: mysql/mysql-server:5.7
         environment:
          MYSQL_ROOT_PASSWORD: secret123456789-
-         MYSQL_DATABASE: provectus
+         MYSQL_DATABASE: sb_db
          MYSQL_USER: superuser
          MYSQL_PASSWORD: secret123456789-
          MYSQL_ROOT_HOST: '%'

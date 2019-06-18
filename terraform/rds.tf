@@ -55,7 +55,8 @@ resource "aws_db_parameter_group" "mysql" {
 resource "aws_db_subnet_group" "mysql" {
   name        = "${var.project}-${var.environment}"
   description = "${var.project} group of subnets"
-  subnet_ids  = concat("${aws_subnet.private.*.id}", "${aws_subnet.public.*.id}")
+  #subnet_ids  = concat("${aws_subnet.private.*.id}", "${aws_subnet.public.*.id}")
+  subnet_ids  = "${aws_subnet.private.*.id}"
   tags = {
     Name = "${var.project} DB subnet group"
   }

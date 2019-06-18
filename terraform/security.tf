@@ -6,8 +6,8 @@ resource "aws_security_group" "lb" {
 
   ingress {
     protocol    = "tcp"
-    from_port   = 8080
-    to_port     = 8080
+    from_port   = 80
+    to_port     = 80
     cidr_blocks = ["0.0.0.0/0"]
   }
 
@@ -46,7 +46,11 @@ resource "aws_security_group" "mysql" {
   name        = "${var.project}-${var.environment}-mysql"
   description = "security group for ${var.project} mysql"
   vpc_id      = "${aws_vpc.main.id}"
-
+  tags = {
+    Name = "${var.environment}-rds-mysql"
+    Environment =  "${var.environment}"
+  }
+  
   ingress {
     from_port   = 3306
     to_port     = 3306

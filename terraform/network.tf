@@ -3,6 +3,9 @@ data "aws_availability_zones" "available" {}
 
 resource "aws_vpc" "main" {
   cidr_block = "172.17.0.0/16"
+  tags =  {
+    name = "vpc-sb-main"
+  }
 }
 
 # Create var.az_count private subnets, each in a different AZ
@@ -11,6 +14,9 @@ resource "aws_subnet" "private" {
   cidr_block        = "${cidrsubnet(aws_vpc.main.cidr_block, 8, count.index)}"
   availability_zone = "${data.aws_availability_zones.available.names[count.index]}"
   vpc_id            = "${aws_vpc.main.id}"
+  tags = {
+    name = "vpc-sb-private-subnet"
+  }
 }
 
 # Create var.az_count public subnets, each in a different AZ
@@ -20,11 +26,17 @@ resource "aws_subnet" "public" {
   availability_zone       = "${data.aws_availability_zones.available.names[count.index]}"
   vpc_id                  = "${aws_vpc.main.id}"
   map_public_ip_on_launch = true
+    tags = {
+        Name = "vpc-sb-public-subnet"
+    }
 }
 
 # IGW for the public subnet
 resource "aws_internet_gateway" "gw" {
   vpc_id = "${aws_vpc.main.id}"
+  tags = {
+    Name = "vpc-sb-internet-gateway"
+  }
 }
 
 # Route the public subnet trafic through the IGW
@@ -56,7 +68,9 @@ resource "aws_route_table" "private" {
     cidr_block = "0.0.0.0/0"
     nat_gateway_id = "${element(aws_nat_gateway.gw.*.id, count.index)}"
     #gateway_id          = "${aws_internet_gateway.gw.id}"
-
+  }
+  tags = {
+    Name = "vpc-sb-private-route-table"
   }
 }
 
