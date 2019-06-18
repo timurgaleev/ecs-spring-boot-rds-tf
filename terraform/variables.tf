@@ -62,11 +62,6 @@ variable "db_username" {
   default = "superuser"
 }
 
-# Password for RDS
-variable "db_password" {
-  default = "secret123456789-"
-}
-
 # The DB name in the RDS instance. Note that this cannot contain -'s
 variable "db_name" {
   default = "sb_db"
@@ -76,3 +71,7 @@ variable "db_port" {
   default = "3306"
 }
 
+# SSM password
+variable "database_master_password" {
+  default =  "secret123456789-"
+}

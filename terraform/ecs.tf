@@ -15,7 +15,7 @@ data "template_file" "sb_app" {
     db_port        = "${var.db_port}"
     db_name        = "${var.db_name}"
     db_username    = "${var.db_username}"
-    db_password    = "${var.db_password}"
+    db_password    = "${aws_ssm_parameter.secret.value}"
   }
 }
 

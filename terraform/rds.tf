@@ -10,7 +10,7 @@ resource "aws_db_instance" "mysql" {
   instance_class            = "db.t2.micro"
   name                      = "${var.db_name}"
   username                  = "${var.db_username}"
-  password                  = "${var.db_password}"
+  password                  = "${aws_ssm_parameter.secret.value}"
   port                      = "${var.db_port}"
   publicly_accessible       = false
   security_group_names      = []
@@ -27,6 +27,17 @@ resource "aws_db_instance" "mysql" {
   tags = {
     Name  = "${var.project}-${var.environment}"
     Group = "${var.project}"
+  }
+}
+
+resource "aws_ssm_parameter" "secret" {
+  name        = "/${var.environment}/database/password/master"
+  description = "The parameter description"
+  type        = "SecureString"
+  value       = "${var.database_master_password}"
+
+  tags = {
+    environment = "${var.environment}"
   }
 }
 
